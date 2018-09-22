@@ -100,4 +100,13 @@ class Student
     end.first
   end
 
+  def self.all_students_in_grade_X(x)
+    stud_array = []
+    sql = "SELECT * FROM students WHERE grade=?;"
+    DB[:conn].execute(sql, x).map do |row|
+      stud_array << self.new_from_db(row)
+    end
+    stud_array
+  end
+
 end
