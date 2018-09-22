@@ -92,4 +92,12 @@ class Student
     stud_array
   end
 
+  def self.first_student_in_grade_10
+    stud_array = []
+    sql = "SELECT * FROM students WHERE grade=10 LIMIT 1;"
+    row = DB[:conn].execute(sql)
+    student = self.new_from_db(row)
+    student
+  end
+
 end
