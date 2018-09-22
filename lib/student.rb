@@ -21,12 +21,6 @@ class Student
     end
   end
 
-  def self.all_from_db
-    sql = "SELECT * FROM students;"
-    stud_array = DB[:conn].execute(sql)
-    stud_array
-  end
-
   def self.find_by_name(name)
     # find the student in the database given a name
     # return a new instance of the Student class
@@ -72,4 +66,11 @@ class Student
     stud_array = DB[:conn].execute(sql)
     stud_array
   end
+
+  def self.students_below_12th_grade
+    sql = "SELECT * FROM students WHERE grade<12;"
+    stud_array = DB[:conn].execute(sql)
+    stud_array
+  end
+
 end
