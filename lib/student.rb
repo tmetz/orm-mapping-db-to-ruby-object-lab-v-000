@@ -83,4 +83,13 @@ class Student
     stud_array
   end
 
+  def self.first_X_students_in_grade_10(x)
+    stud_array = []
+    sql = "SELECT * FROM students WHERE grade=12 LIMIT ?;"
+    DB[:conn].execute(sql, x).map do |row|
+      stud_array << self.new_from_db(row)
+    end
+    stud_array
+  end
+
 end
